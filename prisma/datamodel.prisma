@@ -1,0 +1,49 @@
+type Pokemon {
+  id: ID! @id
+  name: String! @unique
+  order: Int!
+  sprite: String!
+  createdAt: DateTime! @createdAt
+  types: [PokemonType]!
+}
+
+type PokemonType {
+  _id: ID!  @id
+  slot: Int!
+  type: Type!
+}
+
+type Type {
+  id: ID! @id
+  name: PokemonTypesListInput!
+  url: String!
+  createdAt: DateTime! @createdAt
+} 
+
+enum PokemonOrderByInput {
+  Order_ASC
+  Order_DESC
+  Name_ASC
+  Name_DESC
+}
+
+enum PokemonTypesListInput {
+  Normal	
+  Fire
+  Water
+  Grass
+  Electric
+  Ice
+  Fighting	
+  Poison
+  Ground	
+  Flying
+  Psychic	
+  Bug
+  Rock	
+  Ghost
+  Dark	
+  Dragon
+  Steel	
+  Fairy
+}

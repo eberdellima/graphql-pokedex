@@ -1,0 +1,63 @@
+type Query {
+  pokemonById(id: Int!): Pokemon
+  pokemonByName(name: String!): Pokemon
+  pokemonsByType(type: String): [PokemonInfo!]
+  pokemons(skip: Int, first: Int, orderBy: PokemonOrderByInput): [PokemonInfo!]
+}
+
+type Mutation {
+  addPokemon(id: Int!): String!
+  deletePokemon(id: ID!): String!
+}
+
+type Pokemon {
+  id: ID!
+  name: String!
+  order: Int!
+  sprite: String!
+  types: [PokemonType]!
+}
+
+type PokemonInfo {
+  name: String!
+  url: String!
+}
+
+type PokemonType {
+  slot: Int!
+  type: Type!
+}
+
+type Type {
+  id: ID!
+  name: PokemonTypesListInput!
+  url: String!
+} 
+
+enum PokemonOrderByInput {
+  order_ASC
+  order_DESC
+  name_ASC
+  name_DESC
+}
+
+enum PokemonTypesListInput {
+  Normal	
+  Fire
+  Water
+  Grass
+  Electric
+  Ice
+  Fighting	
+  Poison
+  Ground	
+  Flying
+  Psychic	
+  Bug
+  Rock	
+  Ghost
+  Dark	
+  Dragon
+  Steel	
+  Fairy
+}
