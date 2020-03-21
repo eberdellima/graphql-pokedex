@@ -233,22 +233,38 @@ export type TypeOrderByInput =
 
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
-export interface PokemonTypeCreateInput {
-  _id?: Maybe<ID_Input>;
-  slot: Int;
-  type: TypeCreateOneInput;
-}
-
 export type PokemonWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
   name?: Maybe<String>;
 }>;
 
-export interface PokemonUpdateInput {
-  name?: Maybe<String>;
-  order?: Maybe<Int>;
-  sprite?: Maybe<String>;
-  types?: Maybe<PokemonTypeUpdateManyInput>;
+export interface PokemonTypeWhereInput {
+  _id?: Maybe<ID_Input>;
+  _id_not?: Maybe<ID_Input>;
+  _id_in?: Maybe<ID_Input[] | ID_Input>;
+  _id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  _id_lt?: Maybe<ID_Input>;
+  _id_lte?: Maybe<ID_Input>;
+  _id_gt?: Maybe<ID_Input>;
+  _id_gte?: Maybe<ID_Input>;
+  _id_contains?: Maybe<ID_Input>;
+  _id_not_contains?: Maybe<ID_Input>;
+  _id_starts_with?: Maybe<ID_Input>;
+  _id_not_starts_with?: Maybe<ID_Input>;
+  _id_ends_with?: Maybe<ID_Input>;
+  _id_not_ends_with?: Maybe<ID_Input>;
+  slot?: Maybe<Int>;
+  slot_not?: Maybe<Int>;
+  slot_in?: Maybe<Int[] | Int>;
+  slot_not_in?: Maybe<Int[] | Int>;
+  slot_lt?: Maybe<Int>;
+  slot_lte?: Maybe<Int>;
+  slot_gt?: Maybe<Int>;
+  slot_gte?: Maybe<Int>;
+  type?: Maybe<TypeWhereInput>;
+  AND?: Maybe<PokemonTypeWhereInput[] | PokemonTypeWhereInput>;
+  OR?: Maybe<PokemonTypeWhereInput[] | PokemonTypeWhereInput>;
+  NOT?: Maybe<PokemonTypeWhereInput[] | PokemonTypeWhereInput>;
 }
 
 export interface TypeWhereInput {
@@ -295,74 +311,6 @@ export interface TypeWhereInput {
   AND?: Maybe<TypeWhereInput[] | TypeWhereInput>;
   OR?: Maybe<TypeWhereInput[] | TypeWhereInput>;
   NOT?: Maybe<TypeWhereInput[] | TypeWhereInput>;
-}
-
-export type TypeWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export interface PokemonTypeUpdateWithWhereUniqueNestedInput {
-  where: PokemonTypeWhereUniqueInput;
-  data: PokemonTypeUpdateDataInput;
-}
-
-export interface PokemonTypeScalarWhereInput {
-  _id?: Maybe<ID_Input>;
-  _id_not?: Maybe<ID_Input>;
-  _id_in?: Maybe<ID_Input[] | ID_Input>;
-  _id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  _id_lt?: Maybe<ID_Input>;
-  _id_lte?: Maybe<ID_Input>;
-  _id_gt?: Maybe<ID_Input>;
-  _id_gte?: Maybe<ID_Input>;
-  _id_contains?: Maybe<ID_Input>;
-  _id_not_contains?: Maybe<ID_Input>;
-  _id_starts_with?: Maybe<ID_Input>;
-  _id_not_starts_with?: Maybe<ID_Input>;
-  _id_ends_with?: Maybe<ID_Input>;
-  _id_not_ends_with?: Maybe<ID_Input>;
-  slot?: Maybe<Int>;
-  slot_not?: Maybe<Int>;
-  slot_in?: Maybe<Int[] | Int>;
-  slot_not_in?: Maybe<Int[] | Int>;
-  slot_lt?: Maybe<Int>;
-  slot_lte?: Maybe<Int>;
-  slot_gt?: Maybe<Int>;
-  slot_gte?: Maybe<Int>;
-  AND?: Maybe<PokemonTypeScalarWhereInput[] | PokemonTypeScalarWhereInput>;
-  OR?: Maybe<PokemonTypeScalarWhereInput[] | PokemonTypeScalarWhereInput>;
-  NOT?: Maybe<PokemonTypeScalarWhereInput[] | PokemonTypeScalarWhereInput>;
-}
-
-export interface PokemonTypeUpdateManyInput {
-  create?: Maybe<PokemonTypeCreateInput[] | PokemonTypeCreateInput>;
-  update?: Maybe<
-    | PokemonTypeUpdateWithWhereUniqueNestedInput[]
-    | PokemonTypeUpdateWithWhereUniqueNestedInput
-  >;
-  upsert?: Maybe<
-    | PokemonTypeUpsertWithWhereUniqueNestedInput[]
-    | PokemonTypeUpsertWithWhereUniqueNestedInput
-  >;
-  delete?: Maybe<PokemonTypeWhereUniqueInput[] | PokemonTypeWhereUniqueInput>;
-  connect?: Maybe<PokemonTypeWhereUniqueInput[] | PokemonTypeWhereUniqueInput>;
-  set?: Maybe<PokemonTypeWhereUniqueInput[] | PokemonTypeWhereUniqueInput>;
-  disconnect?: Maybe<
-    PokemonTypeWhereUniqueInput[] | PokemonTypeWhereUniqueInput
-  >;
-  deleteMany?: Maybe<
-    PokemonTypeScalarWhereInput[] | PokemonTypeScalarWhereInput
-  >;
-  updateMany?: Maybe<
-    | PokemonTypeUpdateManyWithWhereNestedInput[]
-    | PokemonTypeUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface PokemonTypeUpsertWithWhereUniqueNestedInput {
-  where: PokemonTypeWhereUniqueInput;
-  update: PokemonTypeUpdateDataInput;
-  create: PokemonTypeCreateInput;
 }
 
 export interface PokemonWhereInput {
@@ -432,42 +380,13 @@ export interface PokemonWhereInput {
   NOT?: Maybe<PokemonWhereInput[] | PokemonWhereInput>;
 }
 
-export interface TypeUpsertNestedInput {
-  update: TypeUpdateDataInput;
-  create: TypeCreateInput;
-}
+export type PokemonTypeWhereUniqueInput = AtLeastOne<{
+  _id: Maybe<ID_Input>;
+}>;
 
-export interface PokemonSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<PokemonWhereInput>;
-  AND?: Maybe<PokemonSubscriptionWhereInput[] | PokemonSubscriptionWhereInput>;
-  OR?: Maybe<PokemonSubscriptionWhereInput[] | PokemonSubscriptionWhereInput>;
-  NOT?: Maybe<PokemonSubscriptionWhereInput[] | PokemonSubscriptionWhereInput>;
-}
-
-export interface TypeUpdateDataInput {
-  name?: Maybe<PokemonTypesListInput>;
-  url?: Maybe<String>;
-}
-
-export interface TypeUpdateInput {
-  name?: Maybe<PokemonTypesListInput>;
-  url?: Maybe<String>;
-}
-
-export interface PokemonTypeUpdateInput {
-  slot?: Maybe<Int>;
-  type?: Maybe<TypeUpdateOneRequiredInput>;
-}
-
-export interface PokemonUpdateManyMutationInput {
-  name?: Maybe<String>;
-  order?: Maybe<Int>;
-  sprite?: Maybe<String>;
-}
+export type TypeWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
 
 export interface PokemonCreateInput {
   id?: Maybe<ID_Input>;
@@ -477,31 +396,68 @@ export interface PokemonCreateInput {
   types?: Maybe<PokemonTypeCreateManyInput>;
 }
 
-export interface PokemonTypeUpdateManyWithWhereNestedInput {
-  where: PokemonTypeScalarWhereInput;
-  data: PokemonTypeUpdateManyDataInput;
-}
-
 export interface PokemonTypeCreateManyInput {
   create?: Maybe<PokemonTypeCreateInput[] | PokemonTypeCreateInput>;
   connect?: Maybe<PokemonTypeWhereUniqueInput[] | PokemonTypeWhereUniqueInput>;
 }
 
-export interface PokemonTypeSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<PokemonTypeWhereInput>;
-  AND?: Maybe<
-    PokemonTypeSubscriptionWhereInput[] | PokemonTypeSubscriptionWhereInput
+export interface PokemonTypeCreateInput {
+  _id?: Maybe<ID_Input>;
+  slot: Int;
+  type: TypeCreateOneInput;
+}
+
+export interface TypeCreateOneInput {
+  create?: Maybe<TypeCreateInput>;
+  connect?: Maybe<TypeWhereUniqueInput>;
+}
+
+export interface TypeCreateInput {
+  id?: Maybe<ID_Input>;
+  name: PokemonTypesListInput;
+  url: String;
+}
+
+export interface PokemonUpdateInput {
+  name?: Maybe<String>;
+  order?: Maybe<Int>;
+  sprite?: Maybe<String>;
+  types?: Maybe<PokemonTypeUpdateManyInput>;
+}
+
+export interface PokemonTypeUpdateManyInput {
+  create?: Maybe<PokemonTypeCreateInput[] | PokemonTypeCreateInput>;
+  update?: Maybe<
+    | PokemonTypeUpdateWithWhereUniqueNestedInput[]
+    | PokemonTypeUpdateWithWhereUniqueNestedInput
   >;
-  OR?: Maybe<
-    PokemonTypeSubscriptionWhereInput[] | PokemonTypeSubscriptionWhereInput
+  upsert?: Maybe<
+    | PokemonTypeUpsertWithWhereUniqueNestedInput[]
+    | PokemonTypeUpsertWithWhereUniqueNestedInput
   >;
-  NOT?: Maybe<
-    PokemonTypeSubscriptionWhereInput[] | PokemonTypeSubscriptionWhereInput
+  delete?: Maybe<PokemonTypeWhereUniqueInput[] | PokemonTypeWhereUniqueInput>;
+  connect?: Maybe<PokemonTypeWhereUniqueInput[] | PokemonTypeWhereUniqueInput>;
+  set?: Maybe<PokemonTypeWhereUniqueInput[] | PokemonTypeWhereUniqueInput>;
+  disconnect?: Maybe<
+    PokemonTypeWhereUniqueInput[] | PokemonTypeWhereUniqueInput
   >;
+  deleteMany?: Maybe<
+    PokemonTypeScalarWhereInput[] | PokemonTypeScalarWhereInput
+  >;
+  updateMany?: Maybe<
+    | PokemonTypeUpdateManyWithWhereNestedInput[]
+    | PokemonTypeUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface PokemonTypeUpdateWithWhereUniqueNestedInput {
+  where: PokemonTypeWhereUniqueInput;
+  data: PokemonTypeUpdateDataInput;
+}
+
+export interface PokemonTypeUpdateDataInput {
+  slot?: Maybe<Int>;
+  type?: Maybe<TypeUpdateOneRequiredInput>;
 }
 
 export interface TypeUpdateOneRequiredInput {
@@ -511,16 +467,23 @@ export interface TypeUpdateOneRequiredInput {
   connect?: Maybe<TypeWhereUniqueInput>;
 }
 
-export interface PokemonTypeUpdateManyMutationInput {
-  slot?: Maybe<Int>;
+export interface TypeUpdateDataInput {
+  name?: Maybe<PokemonTypesListInput>;
+  url?: Maybe<String>;
 }
 
-export interface PokemonTypeUpdateDataInput {
-  slot?: Maybe<Int>;
-  type?: Maybe<TypeUpdateOneRequiredInput>;
+export interface TypeUpsertNestedInput {
+  update: TypeUpdateDataInput;
+  create: TypeCreateInput;
 }
 
-export interface PokemonTypeWhereInput {
+export interface PokemonTypeUpsertWithWhereUniqueNestedInput {
+  where: PokemonTypeWhereUniqueInput;
+  update: PokemonTypeUpdateDataInput;
+  create: PokemonTypeCreateInput;
+}
+
+export interface PokemonTypeScalarWhereInput {
   _id?: Maybe<ID_Input>;
   _id_not?: Maybe<ID_Input>;
   _id_in?: Maybe<ID_Input[] | ID_Input>;
@@ -543,30 +506,71 @@ export interface PokemonTypeWhereInput {
   slot_lte?: Maybe<Int>;
   slot_gt?: Maybe<Int>;
   slot_gte?: Maybe<Int>;
-  type?: Maybe<TypeWhereInput>;
-  AND?: Maybe<PokemonTypeWhereInput[] | PokemonTypeWhereInput>;
-  OR?: Maybe<PokemonTypeWhereInput[] | PokemonTypeWhereInput>;
-  NOT?: Maybe<PokemonTypeWhereInput[] | PokemonTypeWhereInput>;
+  AND?: Maybe<PokemonTypeScalarWhereInput[] | PokemonTypeScalarWhereInput>;
+  OR?: Maybe<PokemonTypeScalarWhereInput[] | PokemonTypeScalarWhereInput>;
+  NOT?: Maybe<PokemonTypeScalarWhereInput[] | PokemonTypeScalarWhereInput>;
 }
 
-export interface TypeCreateInput {
-  id?: Maybe<ID_Input>;
-  name: PokemonTypesListInput;
-  url: String;
+export interface PokemonTypeUpdateManyWithWhereNestedInput {
+  where: PokemonTypeScalarWhereInput;
+  data: PokemonTypeUpdateManyDataInput;
 }
 
-export interface TypeCreateOneInput {
-  create?: Maybe<TypeCreateInput>;
-  connect?: Maybe<TypeWhereUniqueInput>;
+export interface PokemonTypeUpdateManyDataInput {
+  slot?: Maybe<Int>;
 }
 
-export type PokemonTypeWhereUniqueInput = AtLeastOne<{
-  _id: Maybe<ID_Input>;
-}>;
+export interface PokemonUpdateManyMutationInput {
+  name?: Maybe<String>;
+  order?: Maybe<Int>;
+  sprite?: Maybe<String>;
+}
+
+export interface PokemonTypeUpdateInput {
+  slot?: Maybe<Int>;
+  type?: Maybe<TypeUpdateOneRequiredInput>;
+}
+
+export interface PokemonTypeUpdateManyMutationInput {
+  slot?: Maybe<Int>;
+}
+
+export interface TypeUpdateInput {
+  name?: Maybe<PokemonTypesListInput>;
+  url?: Maybe<String>;
+}
 
 export interface TypeUpdateManyMutationInput {
   name?: Maybe<PokemonTypesListInput>;
   url?: Maybe<String>;
+}
+
+export interface PokemonSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<PokemonWhereInput>;
+  AND?: Maybe<PokemonSubscriptionWhereInput[] | PokemonSubscriptionWhereInput>;
+  OR?: Maybe<PokemonSubscriptionWhereInput[] | PokemonSubscriptionWhereInput>;
+  NOT?: Maybe<PokemonSubscriptionWhereInput[] | PokemonSubscriptionWhereInput>;
+}
+
+export interface PokemonTypeSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<PokemonTypeWhereInput>;
+  AND?: Maybe<
+    PokemonTypeSubscriptionWhereInput[] | PokemonTypeSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    PokemonTypeSubscriptionWhereInput[] | PokemonTypeSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    PokemonTypeSubscriptionWhereInput[] | PokemonTypeSubscriptionWhereInput
+  >;
 }
 
 export interface TypeSubscriptionWhereInput {
@@ -580,187 +584,8 @@ export interface TypeSubscriptionWhereInput {
   NOT?: Maybe<TypeSubscriptionWhereInput[] | TypeSubscriptionWhereInput>;
 }
 
-export interface PokemonTypeUpdateManyDataInput {
-  slot?: Maybe<Int>;
-}
-
 export interface NodeNode {
   id: ID_Output;
-}
-
-export interface TypePreviousValues {
-  id: ID_Output;
-  name: PokemonTypesListInput;
-  url: String;
-  createdAt: DateTimeOutput;
-}
-
-export interface TypePreviousValuesPromise
-  extends Promise<TypePreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<PokemonTypesListInput>;
-  url: () => Promise<String>;
-  createdAt: () => Promise<DateTimeOutput>;
-}
-
-export interface TypePreviousValuesSubscription
-  extends Promise<AsyncIterator<TypePreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<PokemonTypesListInput>>;
-  url: () => Promise<AsyncIterator<String>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface PokemonEdge {
-  node: Pokemon;
-  cursor: String;
-}
-
-export interface PokemonEdgePromise extends Promise<PokemonEdge>, Fragmentable {
-  node: <T = PokemonPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface PokemonEdgeSubscription
-  extends Promise<AsyncIterator<PokemonEdge>>,
-    Fragmentable {
-  node: <T = PokemonSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface PokemonType {
-  _id: ID_Output;
-  slot: Int;
-}
-
-export interface PokemonTypePromise extends Promise<PokemonType>, Fragmentable {
-  _id: () => Promise<ID_Output>;
-  slot: () => Promise<Int>;
-  type: <T = TypePromise>() => T;
-}
-
-export interface PokemonTypeSubscription
-  extends Promise<AsyncIterator<PokemonType>>,
-    Fragmentable {
-  _id: () => Promise<AsyncIterator<ID_Output>>;
-  slot: () => Promise<AsyncIterator<Int>>;
-  type: <T = TypeSubscription>() => T;
-}
-
-export interface PokemonTypeNullablePromise
-  extends Promise<PokemonType | null>,
-    Fragmentable {
-  _id: () => Promise<ID_Output>;
-  slot: () => Promise<Int>;
-  type: <T = TypePromise>() => T;
-}
-
-export interface AggregatePokemon {
-  count: Int;
-}
-
-export interface AggregatePokemonPromise
-  extends Promise<AggregatePokemon>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregatePokemonSubscription
-  extends Promise<AsyncIterator<AggregatePokemon>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface PokemonTypeSubscriptionPayload {
-  mutation: MutationType;
-  node: PokemonType;
-  updatedFields: String[];
-  previousValues: PokemonTypePreviousValues;
-}
-
-export interface PokemonTypeSubscriptionPayloadPromise
-  extends Promise<PokemonTypeSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = PokemonTypePromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = PokemonTypePreviousValuesPromise>() => T;
-}
-
-export interface PokemonTypeSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<PokemonTypeSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = PokemonTypeSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = PokemonTypePreviousValuesSubscription>() => T;
-}
-
-export interface Type {
-  id: ID_Output;
-  name: PokemonTypesListInput;
-  url: String;
-  createdAt: DateTimeOutput;
-}
-
-export interface TypePromise extends Promise<Type>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<PokemonTypesListInput>;
-  url: () => Promise<String>;
-  createdAt: () => Promise<DateTimeOutput>;
-}
-
-export interface TypeSubscription
-  extends Promise<AsyncIterator<Type>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<PokemonTypesListInput>>;
-  url: () => Promise<AsyncIterator<String>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface TypeNullablePromise
-  extends Promise<Type | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<PokemonTypesListInput>;
-  url: () => Promise<String>;
-  createdAt: () => Promise<DateTimeOutput>;
-}
-
-export interface AggregateType {
-  count: Int;
-}
-
-export interface AggregateTypePromise
-  extends Promise<AggregateType>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateTypeSubscription
-  extends Promise<AsyncIterator<AggregateType>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface TypeEdge {
-  node: Type;
-  cursor: String;
-}
-
-export interface TypeEdgePromise extends Promise<TypeEdge>, Fragmentable {
-  node: <T = TypePromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface TypeEdgeSubscription
-  extends Promise<AsyncIterator<TypeEdge>>,
-    Fragmentable {
-  node: <T = TypeSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
 }
 
 export interface Pokemon {
@@ -826,134 +651,63 @@ export interface PokemonNullablePromise
   }) => T;
 }
 
-export interface PageInfo {
-  hasNextPage: Boolean;
-  hasPreviousPage: Boolean;
-  startCursor?: String;
-  endCursor?: String;
-}
-
-export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
-  hasNextPage: () => Promise<Boolean>;
-  hasPreviousPage: () => Promise<Boolean>;
-  startCursor: () => Promise<String>;
-  endCursor: () => Promise<String>;
-}
-
-export interface PageInfoSubscription
-  extends Promise<AsyncIterator<PageInfo>>,
-    Fragmentable {
-  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
-  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
-  startCursor: () => Promise<AsyncIterator<String>>;
-  endCursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface PokemonTypeEdge {
-  node: PokemonType;
-  cursor: String;
-}
-
-export interface PokemonTypeEdgePromise
-  extends Promise<PokemonTypeEdge>,
-    Fragmentable {
-  node: <T = PokemonTypePromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface PokemonTypeEdgeSubscription
-  extends Promise<AsyncIterator<PokemonTypeEdge>>,
-    Fragmentable {
-  node: <T = PokemonTypeSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface BatchPayload {
-  count: Long;
-}
-
-export interface BatchPayloadPromise
-  extends Promise<BatchPayload>,
-    Fragmentable {
-  count: () => Promise<Long>;
-}
-
-export interface BatchPayloadSubscription
-  extends Promise<AsyncIterator<BatchPayload>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Long>>;
-}
-
-export interface PokemonPreviousValues {
-  id: ID_Output;
-  name: String;
-  order: Int;
-  sprite: String;
-  createdAt: DateTimeOutput;
-}
-
-export interface PokemonPreviousValuesPromise
-  extends Promise<PokemonPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  order: () => Promise<Int>;
-  sprite: () => Promise<String>;
-  createdAt: () => Promise<DateTimeOutput>;
-}
-
-export interface PokemonPreviousValuesSubscription
-  extends Promise<AsyncIterator<PokemonPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  order: () => Promise<AsyncIterator<Int>>;
-  sprite: () => Promise<AsyncIterator<String>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface PokemonSubscriptionPayload {
-  mutation: MutationType;
-  node: Pokemon;
-  updatedFields: String[];
-  previousValues: PokemonPreviousValues;
-}
-
-export interface PokemonSubscriptionPayloadPromise
-  extends Promise<PokemonSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = PokemonPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = PokemonPreviousValuesPromise>() => T;
-}
-
-export interface PokemonSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<PokemonSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = PokemonSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = PokemonPreviousValuesSubscription>() => T;
-}
-
-export interface PokemonTypePreviousValues {
+export interface PokemonType {
   _id: ID_Output;
   slot: Int;
 }
 
-export interface PokemonTypePreviousValuesPromise
-  extends Promise<PokemonTypePreviousValues>,
-    Fragmentable {
+export interface PokemonTypePromise extends Promise<PokemonType>, Fragmentable {
   _id: () => Promise<ID_Output>;
   slot: () => Promise<Int>;
+  type: <T = TypePromise>() => T;
 }
 
-export interface PokemonTypePreviousValuesSubscription
-  extends Promise<AsyncIterator<PokemonTypePreviousValues>>,
+export interface PokemonTypeSubscription
+  extends Promise<AsyncIterator<PokemonType>>,
     Fragmentable {
   _id: () => Promise<AsyncIterator<ID_Output>>;
   slot: () => Promise<AsyncIterator<Int>>;
+  type: <T = TypeSubscription>() => T;
+}
+
+export interface PokemonTypeNullablePromise
+  extends Promise<PokemonType | null>,
+    Fragmentable {
+  _id: () => Promise<ID_Output>;
+  slot: () => Promise<Int>;
+  type: <T = TypePromise>() => T;
+}
+
+export interface Type {
+  id: ID_Output;
+  name: PokemonTypesListInput;
+  url: String;
+  createdAt: DateTimeOutput;
+}
+
+export interface TypePromise extends Promise<Type>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<PokemonTypesListInput>;
+  url: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface TypeSubscription
+  extends Promise<AsyncIterator<Type>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<PokemonTypesListInput>>;
+  url: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface TypeNullablePromise
+  extends Promise<Type | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<PokemonTypesListInput>;
+  url: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
 }
 
 export interface PokemonConnection {
@@ -977,29 +731,60 @@ export interface PokemonConnectionSubscription
   aggregate: <T = AggregatePokemonSubscription>() => T;
 }
 
-export interface TypeSubscriptionPayload {
-  mutation: MutationType;
-  node: Type;
-  updatedFields: String[];
-  previousValues: TypePreviousValues;
+export interface PageInfo {
+  hasNextPage: Boolean;
+  hasPreviousPage: Boolean;
+  startCursor?: String;
+  endCursor?: String;
 }
 
-export interface TypeSubscriptionPayloadPromise
-  extends Promise<TypeSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = TypePromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = TypePreviousValuesPromise>() => T;
+export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
+  hasNextPage: () => Promise<Boolean>;
+  hasPreviousPage: () => Promise<Boolean>;
+  startCursor: () => Promise<String>;
+  endCursor: () => Promise<String>;
 }
 
-export interface TypeSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<TypeSubscriptionPayload>>,
+export interface PageInfoSubscription
+  extends Promise<AsyncIterator<PageInfo>>,
     Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = TypeSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = TypePreviousValuesSubscription>() => T;
+  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
+  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
+  startCursor: () => Promise<AsyncIterator<String>>;
+  endCursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface PokemonEdge {
+  node: Pokemon;
+  cursor: String;
+}
+
+export interface PokemonEdgePromise extends Promise<PokemonEdge>, Fragmentable {
+  node: <T = PokemonPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface PokemonEdgeSubscription
+  extends Promise<AsyncIterator<PokemonEdge>>,
+    Fragmentable {
+  node: <T = PokemonSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregatePokemon {
+  count: Int;
+}
+
+export interface AggregatePokemonPromise
+  extends Promise<AggregatePokemon>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregatePokemonSubscription
+  extends Promise<AsyncIterator<AggregatePokemon>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface PokemonTypeConnection {
@@ -1021,6 +806,25 @@ export interface PokemonTypeConnectionSubscription
   pageInfo: <T = PageInfoSubscription>() => T;
   edges: <T = Promise<AsyncIterator<PokemonTypeEdgeSubscription>>>() => T;
   aggregate: <T = AggregatePokemonTypeSubscription>() => T;
+}
+
+export interface PokemonTypeEdge {
+  node: PokemonType;
+  cursor: String;
+}
+
+export interface PokemonTypeEdgePromise
+  extends Promise<PokemonTypeEdge>,
+    Fragmentable {
+  node: <T = PokemonTypePromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface PokemonTypeEdgeSubscription
+  extends Promise<AsyncIterator<PokemonTypeEdge>>,
+    Fragmentable {
+  node: <T = PokemonTypeSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
 }
 
 export interface AggregatePokemonType {
@@ -1060,22 +864,201 @@ export interface TypeConnectionSubscription
   aggregate: <T = AggregateTypeSubscription>() => T;
 }
 
-/*
-The `Boolean` scalar type represents `true` or `false`.
-*/
-export type Boolean = boolean;
+export interface TypeEdge {
+  node: Type;
+  cursor: String;
+}
 
-/*
-DateTime scalar input type, allowing Date
-*/
-export type DateTimeInput = Date | string;
+export interface TypeEdgePromise extends Promise<TypeEdge>, Fragmentable {
+  node: <T = TypePromise>() => T;
+  cursor: () => Promise<String>;
+}
 
-/*
-DateTime scalar output type, which is always a string
-*/
-export type DateTimeOutput = string;
+export interface TypeEdgeSubscription
+  extends Promise<AsyncIterator<TypeEdge>>,
+    Fragmentable {
+  node: <T = TypeSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
 
-export type Long = string;
+export interface AggregateType {
+  count: Int;
+}
+
+export interface AggregateTypePromise
+  extends Promise<AggregateType>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateTypeSubscription
+  extends Promise<AsyncIterator<AggregateType>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface BatchPayload {
+  count: Long;
+}
+
+export interface BatchPayloadPromise
+  extends Promise<BatchPayload>,
+    Fragmentable {
+  count: () => Promise<Long>;
+}
+
+export interface BatchPayloadSubscription
+  extends Promise<AsyncIterator<BatchPayload>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Long>>;
+}
+
+export interface PokemonSubscriptionPayload {
+  mutation: MutationType;
+  node: Pokemon;
+  updatedFields: String[];
+  previousValues: PokemonPreviousValues;
+}
+
+export interface PokemonSubscriptionPayloadPromise
+  extends Promise<PokemonSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = PokemonPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = PokemonPreviousValuesPromise>() => T;
+}
+
+export interface PokemonSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<PokemonSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = PokemonSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = PokemonPreviousValuesSubscription>() => T;
+}
+
+export interface PokemonPreviousValues {
+  id: ID_Output;
+  name: String;
+  order: Int;
+  sprite: String;
+  createdAt: DateTimeOutput;
+}
+
+export interface PokemonPreviousValuesPromise
+  extends Promise<PokemonPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  order: () => Promise<Int>;
+  sprite: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface PokemonPreviousValuesSubscription
+  extends Promise<AsyncIterator<PokemonPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  order: () => Promise<AsyncIterator<Int>>;
+  sprite: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface PokemonTypeSubscriptionPayload {
+  mutation: MutationType;
+  node: PokemonType;
+  updatedFields: String[];
+  previousValues: PokemonTypePreviousValues;
+}
+
+export interface PokemonTypeSubscriptionPayloadPromise
+  extends Promise<PokemonTypeSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = PokemonTypePromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = PokemonTypePreviousValuesPromise>() => T;
+}
+
+export interface PokemonTypeSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<PokemonTypeSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = PokemonTypeSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = PokemonTypePreviousValuesSubscription>() => T;
+}
+
+export interface PokemonTypePreviousValues {
+  _id: ID_Output;
+  slot: Int;
+}
+
+export interface PokemonTypePreviousValuesPromise
+  extends Promise<PokemonTypePreviousValues>,
+    Fragmentable {
+  _id: () => Promise<ID_Output>;
+  slot: () => Promise<Int>;
+}
+
+export interface PokemonTypePreviousValuesSubscription
+  extends Promise<AsyncIterator<PokemonTypePreviousValues>>,
+    Fragmentable {
+  _id: () => Promise<AsyncIterator<ID_Output>>;
+  slot: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface TypeSubscriptionPayload {
+  mutation: MutationType;
+  node: Type;
+  updatedFields: String[];
+  previousValues: TypePreviousValues;
+}
+
+export interface TypeSubscriptionPayloadPromise
+  extends Promise<TypeSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = TypePromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = TypePreviousValuesPromise>() => T;
+}
+
+export interface TypeSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<TypeSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = TypeSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = TypePreviousValuesSubscription>() => T;
+}
+
+export interface TypePreviousValues {
+  id: ID_Output;
+  name: PokemonTypesListInput;
+  url: String;
+  createdAt: DateTimeOutput;
+}
+
+export interface TypePreviousValuesPromise
+  extends Promise<TypePreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<PokemonTypesListInput>;
+  url: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+}
+
+export interface TypePreviousValuesSubscription
+  extends Promise<AsyncIterator<TypePreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<PokemonTypesListInput>>;
+  url: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
 
 /*
 The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.
@@ -1092,6 +1075,23 @@ export type String = string;
 The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.
 */
 export type Int = number;
+
+/*
+DateTime scalar input type, allowing Date
+*/
+export type DateTimeInput = Date | string;
+
+/*
+DateTime scalar output type, which is always a string
+*/
+export type DateTimeOutput = string;
+
+/*
+The `Boolean` scalar type represents `true` or `false`.
+*/
+export type Boolean = boolean;
+
+export type Long = string;
 
 /**
  * Model Metadata
