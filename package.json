@@ -10,10 +10,10 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "graphql": "^15.0.0",
     "graphql-yoga": "^1.18.3",
-    "prisma": "^1.34.10",
+    "prisma": "^2.16.0",
     "prisma-client-lib": "^1.34.10"
   },
   "devDependencies": {
